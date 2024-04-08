@@ -4,6 +4,7 @@ from .schemas import StudentCreate, StudentUpdate
 from .models import Student
 from typing import List
 from bson import ObjectId
+import uvicorn
 
 app = FastAPI()
 
@@ -63,3 +64,5 @@ async def delete_student(id: str):
         raise HTTPException(status_code=404, detail="Student not found")
     return {"message": "Student deleted"}
 
+if __name__ == '__main__':
+    uvicorn.run(app, host="127.0.0.1", port=8000)
